@@ -11,7 +11,20 @@ class BookListView: ObservableObject {
     @Published var selectedCategory = "推荐"
     @Published var recommendedBooks: [Book] = []
     @Published var hotListBooks: [Book] = []
-    
+    @Published var books: [Book] = []
+    @Published var Category: String = "推荐"
+    @Published var hotSalesBooks: [Book] = []
+    @Published var classicBooks: [Book] = []
+    @Published var isLoading = false
+    @Published var errorMessage: String?
+       
+       private let scraper = WebScraper()
+       
+       // 示例ISBN库
+       private let sampleISBNs = [
+           "9787020166916",  // 活着
+           "9787532776774",  // 三体
+           "9787020109592" ]
     init() {
         fetchBooks()
     }
